@@ -1,1 +1,1 @@
-https://mnp-3.github.io/COMP584-Project3/
+https://mnp-3.github.io/comp584-project3/
