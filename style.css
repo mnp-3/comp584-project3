@@ -1,0 +1,142 @@
+/* Border box declaration 
+https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
+html {
+  box-sizing: border-box;
+}
+/* inherit border-box on all elements in the universe and before and after
+ */
+*, 
+*:before, 
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+	font-family: Arial, Geneva, sans-serif;
+	background-color: #007a6ab4;
+	
+}
+a {
+	color: #2772B0;
+	font-size: 20px;
+}
+h1{
+	text-align: center;
+	color: #ffffff;
+	font-size: 40px;
+}
+h3{
+	font-size: 25px;
+}
+
+.wrapper {
+	width: 97%;
+	max-width: 1200px;
+	margin: 0 auto;
+	background-color: transparent;
+}
+
+div img {
+	width: auto;
+	max-width: 225px; 
+	
+}
+
+/* grid system -- mobile first! */
+/* flex contatiner */
+
+.row{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 10px;
+	grid-auto-flow: dense; /*dense packing to fill gaps*/
+}
+
+.row-2{
+	display: grid;
+	grid-template-columns: 31% 1fr 1fr;
+	grid-gap: 10px;
+	grid-auto-flow: dense;
+	direction: rtl; /*reverses order of row*/
+}
+
+
+/* attribute selector to give some margin between columns and apply styles to flex items */
+
+[class*="col-"] {
+	width: 100%;
+	padding: 10px;
+	border-radius: 1em;
+}
+
+/* Add background colors to see how much space each column is taking */
+
+.col-1 {
+	background-color: #F4E2DE;
+	color: #025259;
+}
+
+.col-2 {
+	background-color: #D94F04;
+	color: #F4E2DE;
+}
+
+.col-3{
+	background-color: #F29325;
+	color: rgb(2, 82, 89);
+}
+
+.col-4 {
+	background-color: #d4b09d;
+	color: #025259;
+}
+
+.col-5 {
+	background-color: #025259;
+	color: #F4E2DE ;
+	direction: ltr; /*fixes reverse text*/
+	
+}
+
+
+
+/* Tablet Landscape Screen Sizes */
+@media only screen and (min-width: 480px) and (max-width:767px) {
+	.wrapper {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); /*creates colums with 240px width and fills the space out evenly*/
+		/* 
+		grid-auto-flow https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/grid-auto-flow
+		property controls how the auto-placement algorithm works, specifying exactly how auto-placed items get flowed into the grid
+		with row, items are placed from left to right then top top bottom
+		with dense, the grid will fill in the empty spaces packing them densely
+		*/
+		grid-auto-flow: row dense;
+		justify-items: center;
+		gap: 10px;
+	}
+
+	.row, .row-2 {
+		display: contents;
+	} 
+}
+
+
+/* Desktop screen Sizes */
+@media only screen and (min-width: 768px) {
+
+  .row  {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .col-1 { grid-column: span 1; }  /* 1/4 width */
+  .col-2 { grid-column: span 2; }  /* half width */
+  .col-3 { grid-column: span 3; }  /* 3/4 width */
+  .col-4 { grid-column: span 4; }  /* full width */
+
+  /* Custom width*/
+  .col-5 { 
+    grid-column: span 1; 
+	
+  }
+}
